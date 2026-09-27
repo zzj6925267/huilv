@@ -1,0 +1,8 @@
+node_modules/
+dist/
+release/
+dist-locked-*/
+.learnings/
+*.log
+.DS_Store
+Thumbs.db

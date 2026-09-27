@@ -1,0 +1,54 @@
+{
+  "name": "huilv",
+  "version": "1.0.0",
+  "description": "汇率通 — 每日更新的多币种汇率转换器",
+  "main": "electron/main.js",
+  "author": "huilv",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "web": "npx --yes serve -l 3780 .",
+    "dist": "node scripts/build-win.js",
+    "dist:dir": "electron-builder --win dir --config.directories.output=%TEMP%/huilv-build"
+  },
+  "build": {
+    "appId": "com.huilv.converter",
+    "productName": "汇率通",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "electron/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": ".",
+        "to": "app-web",
+        "filter": [
+          "index.html",
+          "styles.css",
+          "app.js"
+        ]
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "汇率通-${version}-portable.${ext}"
+    },
+    "portable": {
+      "artifactName": "汇率通-${version}-portable.${ext}"
+    }
+  },
+  "devDependencies": {
+    "electron": "^37.2.0",
+    "electron-builder": "^26.0.12"
+  }
+}
